@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-zhabw65^#!z0k4)i6%-%esy&9q3fhpsbaev##j@tf$1ny4prl_
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1','zakatcalc.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','zakat-calc.herokuapp.com']
 
 
 
