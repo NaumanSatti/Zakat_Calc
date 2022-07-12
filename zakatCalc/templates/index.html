@@ -1,0 +1,296 @@
+{% load static %}
+<html>
+<head>
+    <style>
+    .h2,.h5, .h3,.h4{
+        margin-left: 12px;
+    }
+        html,
+body {
+  height: 100%;
+  
+}
+.bs-fullscreen {
+  height: 80%;
+}
+.bs-fullscreen .carousel,
+.bs-fullscreen .item,
+.bs-fullscreen .active {
+  height: 100%;
+}
+.bs-fullscreen .carousel-inner {
+  height: 100%;
+}
+
+.carousel-bg .carousel-inner .item {
+  background-color: darkslategrey;
+  background-size: cover;
+  background-position: center;
+  min-height: 360px;
+  animation-duration: 3s;
+
+}
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+   /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+    </style>
+<title>Zakat Calculator</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    
+    
+    <div class="bs-fullscreen">
+        <div id="carousel-example" class="carousel slide carousel-bg" data-ride="carousel" data-interval="8000">
+           <!-- Bottom dots {indicators} -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example" data-slide-to="1"></li>
+            <li data-target="#carousel-example" data-slide-to="2"></li>
+          </ol>
+          
+          <div class="carousel-inner" role="listbox">
+           
+            <div class="item active" style="background-image: url('{% static '/img/poor1.jpg' %}');">
+              <div class="carousel-caption">
+            
+              </div>
+            </div>
+            <div class="item" style="background-image: url('{% static '/img/poor2.jpg' %}');">
+              <div class="carousel-caption">
+            
+              </div>
+            </div>
+            <div class="item" style="background-image: url('{% static '/img/poor3.jpg' %}');">
+              <div class="carousel-caption">
+            
+              </div>
+
+            </div>
+           
+          </div>
+           
+          <a class="left carousel-control" href="#carousel-example" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+           <a class="right carousel-control" href="#carousel-example" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+</div>
+</div>
+<div style="background-color:aquamarine">
+<p class="h2">“And establish prayer and give Zakat, and whatever good you put forward for yourselves – you will find it with Allah.” (2:110, Qur’an)</p>
+
+<p class="h3">Zakat, one of the five pillars of Islam, is obligatory on all Muslims who meet the Nisab values. Nisab is the minimum amount of net capital that a Muslim must possess in order to be eligible to pay Zakat, which is prescribed as the equivalent of 87.48 grams (7.5 tola) of gold and 612.36 grams (52.5 tola) of silver, respectively.If you wish to calculate your Zakat amount with ease, please use the Zakat Calculator below.</p>
+<br/>
+
+<p class="h4">Note:</p>
+<hr style="margin-top: -5px;">
+<p class="h4" style="color:red;">Price of 1 Tola gold in Pakistan on {{date}} is: PKR {{gold}} (Fetched Live). According to the Current Price, the Nisab according to Gold would be PKR {{gold_nisab}} (7.5 Tola)</p>
+<p class="h4" style="color:red;">Price of 1 Tola silver in Pakistan on {{date}} is: PKR {{silver}} (Fetched Live). According to the Current Price, the Nisab according to Silver would be PKR {{silver_nisab}} (52.5 Tola)</p>
+
+</div>
+    
+<p class="h2">Zakat Calculator</p>
+<!-- <img src="{% static '/img/poor1.jpg' %}" alt="My image"> -->
+
+
+
+
+<form id="zakat-calculator" style="margin-left: 10px;">
+  
+  </div>
+  <div class="row input">
+    <div class="col-md-6">
+      <fieldset>
+        <legend>Cash (نقد رقم)</legend>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="cashinhand">Cash in hand &amp; in bank accounts  (ہاتھ میں اور بینک اکاؤنٹ میں نقد رقم)</label></div>
+          <div class="col-md-6">
+            <input id="cashinhand" name="cashinhand" type="number" min="0" step="10" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="cashdeposited">Cash deposited for some future purpose, e.g. Hajj (مستقبل کے کسی مقصد کے لئے جمع کی گئی نقد رقم، جیسے حج)</label></div>  
+          <div class="col-md-6">
+            <input id="cashdeposited" name="cashdeposited" type="number" min="0" step="10" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="cashloans">Cash given out in loans (قرضوں میں دی گئی نقد رقم)</label></div>
+          <div class="col-md-6">
+            <input id="cashloans" name="cashloans" type="number" min="0" step="10" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="cashinvestments">Investments, shares, saving certificates, pensions funded by money in one’s possession (سرمایہ کاری، حصص، بچت سرٹیفکیٹ، پنشن کسی کے قبضے میں رقم سے مالی اعانت)</label></div>  
+          <div class="col-md-6">
+            <input id="cashinvestments" name="cashinvestments" type="number" min="0" step="10" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Gold and Silver (سونا اور چاندی)</legend>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="gold">Value of Gold that you possess (سونے کی قیمت جو آپ کے پاس ہے)</label></div>  
+          <div class="col-md-6">
+            <input id="gold" name="gold" type="number" step="10" min="0" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="silver">Value of Silver that you possess (چاندی کی قدر جو آپ کے پاس ہے)</label></div>  
+          <div class="col-md-6">
+            <input id="silver" name="silver" type="number" min="0" step="10" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Trade Goods (تجارتی سامان)</legend>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="stock">Value of stock (تجارتی اشیاء کی قدر)</label></div>  
+          <div class="col-md-6">
+            <input id="stock" name="stock" type="number" min="0" step="10" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  
+    <div class="col-md-6">
+      <fieldset>
+        <legend>Liabilities (واجبات)</legend>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="credit">Borrowed money, goods bought on credit (ادھار رقم، قرض پر خریدا گیا سامان)</label></div>
+          <div class="col-md-6">
+            <input id="credit" name="credit" type="number" min="0" step="10" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="wages">Wages due to employees (ملازمین کو ادا کی جانے والی اجرت )</label></div>  
+          <div class="col-md-6">
+            <input id="wages" name="wages" type="number" min="0" step="10" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-md-6"><label class="control-label" for="taxes">Taxes, Rent, utility bills due immediately (ٹیکس، کرایہ، یوٹیلٹی بل فوری طور پر واجب الادا)</label></div>  
+          <div class="col-md-6">
+            <input id="taxes" name="taxes" type="number" min="0" step="10" placeholder="Rs." class="form-control input-md">
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <fieldset>
+        <legend>Nisab threshold (نصاب کی حد)</legend>
+        <div class="row form-group" style="margin-left: 10px;">
+          <div class="row">
+            <select id="operation"  onchange="calc(this.value);">
+            <option value="" disabled selected>Please Choose One</option>
+            <option value="gold">Value of Gold (approximately Rs. {{gold_nisab}})</option>
+            <option value="silver">Value of Silver (approximately Rs. {{silver_nisab}})</option>
+            </select>
+          </div>
+          
+        </div>
+      </fieldset>
+    </div>
+  <div class="row totals" style="margin-left:10px ;">
+    <div class="col-md-6">
+      <div class="row form-group">
+      <label for="res">Your Total Net Worth ( آپ کا کل اثاثہ)</label>
+      <input type="text" name="" id="res" disabled>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row form-group">
+        <label for="res">Your Total Zakat Payable </label>
+        <input type="text" name="" id="zakat"  disabled>
+        </div>
+    </div>
+    
+  </div>
+  </form>
+<script type="text/javascript">
+  function calc(val){
+  
+   var gold_nisab='{{gold_nisab}}';
+   gold_nisab=parseFloat(gold_nisab);
+   var silver_nisab='{{silver_nisab}}';
+   silver_nisab=parseFloat(silver_nisab);
+   
+  
+   if(val=="gold"){
+    
+   var cashinhand= parseFloat(document.getElementById('cashinhand').value);
+   var cashdeposited=parseFloat(document.getElementById('cashdeposited').value);
+   var cashloans=parseFloat(document.getElementById('cashloans').value);
+   var cashinvestments=parseFloat(document.getElementById('cashinvestments').value);
+   var gold=parseFloat(document.getElementById('gold').value);
+   var silver=parseFloat(document.getElementById('silver').value);
+   var stock=parseFloat(document.getElementById('stock').value);
+   var credit=parseFloat(document.getElementById('credit').value);
+   var wages=parseFloat(document.getElementById('wages').value);
+   var taxes=parseFloat(document.getElementById('taxes').value);
+   var totalcash=cashinhand+cashdeposited+cashloans+cashinvestments-credit-wages-taxes+gold+silver+stock;
+   totalcashst=totalcash.toString();
+   document.getElementById('res').value='Rs. '+totalcashst; 
+
+   if(totalcash>=gold_nisab){
+    var zakat= totalcash*0.025;
+    zakat=zakat.toString();
+    document.getElementById('zakat').value='Rs. '+ zakat;
+   }
+   else{
+    var zakat='0';
+    document.getElementById('zakat').value='Rs. '+zakat;
+   }
+   }
+   else{
+    var cashinhand= parseFloat(document.getElementById('cashinhand').value);
+   var cashdeposited=parseFloat(document.getElementById('cashdeposited').value);
+   var cashloans=parseFloat(document.getElementById('cashloans').value);
+   var cashinvestments=parseFloat(document.getElementById('cashinvestments').value);
+   var gold=parseFloat(document.getElementById('gold').value);
+   var silver=parseFloat(document.getElementById('silver').value);
+   var stock=parseFloat(document.getElementById('stock').value);
+   var credit=parseFloat(document.getElementById('credit').value);
+   var wages=parseFloat(document.getElementById('wages').value);
+   var taxes=parseFloat(document.getElementById('taxes').value);
+   var totalcash=cashinhand+cashdeposited+cashloans+cashinvestments-credit-wages-taxes+gold+silver+stock;
+   totalcashst=totalcash.toString();
+   document.getElementById('res').value='Rs. '+totalcashst; 
+   if(totalcash>=silver_nisab){
+    var zakat= totalcash*0.025;
+    zakat=zakat.toString();
+    document.getElementById('zakat').value='Rs. '+ zakat;
+   }
+   else{
+    var zakat='0';
+    document.getElementById('zakat').value='Rs. '+zakat;
+   }
+   }
+   
+  }
+</script>
+{% include 'footer.html' %}
+</body>
+</html>
