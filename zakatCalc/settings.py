@@ -74,7 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'zakatCalc.wsgi.application'
 
-STATIC_ROOT = [os.path.join(BASE_DIR,'zakatCalc/static'),]
+STATIC_ROOT = [os.path.join(BASE_DIR,'static'),]
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
